@@ -7,23 +7,23 @@ Two paths to contribute. Pick the one that matches what you have:
 
 For project background and the skill roadmap, read [`README.md`](README.md) first.
 
-> **Note**: This is an early-stage skeleton. Detailed convention docs (skill design rules, SKILL.md template, DoD checklist, authoritative spec references) will arrive in subsequent commits. The high-level rules below are stable; specific file paths to those convention docs will be added as they land.
+> **Note**: Two reference skills (`design-doc-review`, `skill-design-review`) are now available under `skills/`. Detailed convention docs (skill design rules, SKILL.md template, DoD checklist, authoritative spec references) arrive in subsequent commits. The high-level rules below are stable; specific file paths to those convention docs will be added as they land.
 
 ---
 
 ## Submit a bad-smell sample
 
-The fastest contribution path. You append a real concentration to an existing skill's calibration file.
+The fastest contribution path. You append a generic recognition pattern to an existing skill's `bad-smell-samples.md`.
 
 1. Identify which skill should have caught the smell (see the skill table in [`README.md`](README.md))
 2. Open `skills/<skill-name>/bad-smell-samples.md`
-3. Append a row describing the concentration:
-   - **Concentration** column: one-line factual description of what was observable
-   - **Smells converging** column: which named smell categories from the skill's Smell Profile converge
+3. Append a row describing the pattern:
+   - **Pattern** column: a generic, portable description of what makes this smell recognizable (no project-specific incidents or named artifacts)
+   - **Smell category** column: the matching named category from the skill's Smell Profile
 
-Each sample must cite ≥2 distinct categories converging on a shared evidence anchor — single-category findings stay in working memory, not in the calibration file.
+Each row should describe one generic shape matching one named category. Avoid project memoirs (specific incidents, dated changes, named artifacts) — patterns must be portable across projects. Avoid near-duplicates of existing rows — if your pattern shares the same underlying shape as an existing row, the catalog already covers it. Whether multiple smells cluster on shared evidence to form a Layer 1 concentration is a runtime judgment, not pre-authored here.
 
-4. Open a PR with the sample + a short note on where the smell was encountered
+4. Open a PR with the row + a short note on where you saw an instance (the note explains motivation; the row itself stays generic)
 
 ---
 
@@ -44,7 +44,7 @@ A heavier contribution. New skills must follow project conventions and pass self
    - **Gate 2** — pass the five self-validation criteria: interface clarity / internal encapsulation / single responsibility / independent execution / low coupling
    - **Gate 3** — invoke the skill on a real (or minimal synthetic) artifact and confirm the output matches the `## Output Format` spec, shows no `## Red Flags` symptoms, and passes the `## Verification` checklist
 
-5. **Add at least 3 calibration samples** to your skill's `bad-smell-samples.md`. These should be real observations, not synthetic.
+5. **Populate `bad-smell-samples.md`** with at least one canonical row per named category in your Smell Profile. Generic patterns; no project memoirs; no near-duplicates.
 
 6. **Open a PR** with: `SKILL.md`, `bad-smell-samples.md`, dogfood report, and a short rationale (which agent-skills source you mirrored, if any; or why this is a sniffer-original).
 

@@ -20,8 +20,8 @@ Skills are flat under `skills/` (no phase subdirectories). Below is the navigati
 
 | Phase | Skill | Status | Audit domain |
 |------|------|------|------|
-| Define | `design-doc-review` ✨**MVP** | planned | design-doc smells (specs / ADRs / RFCs) |
-| Define | `skill-design-review` | planned | SKILL.md design quality (sniffer-original) |
+| Define | [`design-doc-review`](skills/design-doc-review/SKILL.md) ✨**MVP** | converged v1 | design-doc smells (specs / ADRs / RFCs) |
+| Define | [`skill-design-review`](skills/skill-design-review/SKILL.md) | converged v1 | SKILL.md design quality (sniffer-original) |
 | Plan | `task-decomposition-review` | planned | task breakdown quality |
 | Build | `interface-contract-review` | planned | contract smells (API / schema / type) |
 | Build | `ui-quality-review` | planned | UI quality (accessibility / responsiveness) |
