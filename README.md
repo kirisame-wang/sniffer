@@ -8,11 +8,27 @@ Each skill is a trained nose for one specific audit domain: architecture drift, 
 
 ## What is graybox verification?
 
-Graybox sits between blackbox (you see nothing) and whitebox (you see everything). The skill collects just enough structured information for an experienced reviewer to form a judgment — then stops. **No conclusions, no scores, no recommendations.**
+Graybox sits between blackbox (you see nothing) and whitebox (you see everything). Too much information drowns the reviewer in detail; too little hides every smell. The skill collects just enough for an experienced reviewer to form a judgment — then stops. **No conclusions, no scores, no recommendations.**
 
-Bad smells are yours to define. The sniffer just flags where to look.
+**The reviewer is the actor, not the agent.** Bad smells are yours to define; the sniffer flags where to look. A report succeeds when the reviewer knows what to ask next — or knows it's safe to ship; not when it enumerates every possible problem. Three rules express this division of labor:
 
-**Equivalent terminology**: graybox equals progressive disclosure applied to audit outputs.
+- **Summary, not verdict** — output is observed facts. The reviewer identifies the smell.
+- **Locate, not expand** — point to where, not what. The reviewer decides whether to dig.
+- **Consistent disclosure depth** — each skill stays at its layer. An X-ray reads bones, not a full-body scan.
+
+### How it works
+
+The audit is diagnostic, not exhaustive. Each skill carries a trained catalog of smells — patterns specific to its audit domain — and reports where the target matches them. Some skills also detect drift through *artifact pairing* (spec vs code, design vs plan), where divergence between two related artifacts is itself a smell. Partial information suffices because the goal is to narrow uncertainty, not certify completeness.
+
+So sniffer isn't a CI gate, continuous monitoring, or a line-by-line review tool — it's a pre-review nose, invoked when a stage artifact lands, to help the reviewer decide where to spend attention.
+
+The same shape — load minimum signal, expand on demand — repeats at three layers. Anthropic uses progressive disclosure for skill *loading*; sniffer extends it to skill *output* and to *documentation*:
+
+| Layer | Always loaded | Loaded on trigger | Loaded on demand |
+|------|--------------|-------------------|------------------|
+| Skill loading | name + description metadata | SKILL.md body | bundled scripts / references |
+| Skill output | top concentrations + coverage | full observations in working memory | reviewer asks → expanded |
+| Documentation | main text (decisions + scope) | `references/<topic>.md` | follow link to read |
 
 ## Skills
 
@@ -69,6 +85,12 @@ A sniffer skill is a folder with `SKILL.md` (Anthropic Agent Skills format). Onc
 
 The agent emits a compact `*-review.md` report with **top concentrations** (multi-category smell clusters) and a **coverage** summary. Full observation set stays in working memory — ask follow-ups (`expand contradictions`, `what's near §3?`, `how would you fix #2?`) and the agent surfaces matching observations in chat.
 
+## Why stop?
+
+- Whitebox review isn't a more complete graybox review — it's a different activity.
+- When information is fully transparent, strategic judgment dissolves into line-by-line comparison.
+- Investigation is a deliberate act. The report identifies where the smell concentrates; pursuing it remains the reviewer's judgment.
+
 The audit phase ends with the report. **Follow-up conversation is normal interaction** — the agent can give opinions, suggestions, and prioritization when asked.
 
 ## Contributing
@@ -80,6 +102,7 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md). Two contribution paths:
 
 ## Inspirations
 
+- **Matt Pocock — *Design the interface, delegate the implementation* (AI Engineer, 2026-04).** sniffer extends his "gray boxes" idea — modules trusted by interface and tests, not line-by-line — from modules to audit outputs.
+- [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) — reference implementation. sniffer mirrors its skill domains where an audit twin is meaningful (their skills *produce*, sniffer *audits the production*)
 - [Anthropic Agent Skills](https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview) — authoritative format spec
 - [agentskills.io](https://agentskills.io/home) — open cross-vendor standard
-- [addyosmani/agent-skills](https://github.com/addyosmani/agent-skills) — reference implementation; sniffer's skill list mirrors its skill domains where the audit twin is meaningful, and adds sniffer-originals (`skill-design-review`, `architecture-review`, `pr-review`, `doc-hygiene-review`) and stage-transition pairs (`requirements-doc-review` ↔ `design-doc-review` ↔ `implementation-plan-review`) where the audit niche has no upstream counterpart
