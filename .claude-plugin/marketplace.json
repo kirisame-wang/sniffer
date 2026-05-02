@@ -1,0 +1,19 @@
+{
+  "name": "sniffer-marketplace",
+  "owner": {
+    "name": "Yi-Cheng Wang"
+  },
+  "metadata": {
+    "description": "Graybox audit skills that sniff bad smells across the software development lifecycle without opening the box."
+  },
+  "plugins": [
+    {
+      "name": "sniffer",
+      "source": {
+        "source": "github",
+        "repo": "kirisame-wang/sniffer"
+      },
+      "description": "Audit skills covering Define / Plan / Build / Verify / Review / Ship phases — each a trained nose for one specific audit domain (design docs, requirements, contracts, security, performance, architecture, PR, release readiness, and more)."
+    }
+  ]
+}
