@@ -16,6 +16,16 @@ Graybox sits between blackbox (you see nothing) and whitebox (you see everything
 - **Locate, not expand** — point to where, not what. The reviewer decides whether to dig.
 - **Consistent disclosure depth** — each skill stays at its layer. An X-ray reads bones, not a full-body scan.
 
+All three rules pin the skill to a stopping point.
+
+### Why stop?
+
+Stopping is a deliberate design choice, not a compromise on completeness:
+
+- Whitebox review isn't a more complete graybox review — it's a different activity.
+- When information is fully transparent, strategic judgment dissolves into line-by-line comparison.
+- Investigation is a deliberate act. The report identifies where the smell concentrates; pursuing it remains the reviewer's judgment.
+
 ### How it works
 
 The audit is diagnostic, not exhaustive. Each skill carries a trained catalog of smells — patterns specific to its audit domain — and reports where the target matches them. Some skills also detect drift through *artifact pairing* (spec vs code, design vs plan), where divergence between two related artifacts is itself a smell. Partial information suffices because the goal is to narrow uncertainty, not certify completeness.
@@ -84,12 +94,6 @@ A sniffer skill is a folder with `SKILL.md` (Anthropic Agent Skills format). Onc
 ```
 
 The agent emits a compact `*-review.md` report with **top concentrations** (multi-category smell clusters) and a **coverage** summary. Full observation set stays in working memory — ask follow-ups (`expand contradictions`, `what's near §3?`, `how would you fix #2?`) and the agent surfaces matching observations in chat.
-
-## Why stop?
-
-- Whitebox review isn't a more complete graybox review — it's a different activity.
-- When information is fully transparent, strategic judgment dissolves into line-by-line comparison.
-- Investigation is a deliberate act. The report identifies where the smell concentrates; pursuing it remains the reviewer's judgment.
 
 The audit phase ends with the report. **Follow-up conversation is normal interaction** — the agent can give opinions, suggestions, and prioritization when asked.
 
