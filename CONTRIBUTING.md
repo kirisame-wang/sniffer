@@ -1,5 +1,7 @@
 # Contributing to sniffer
 
+*繁體中文版本請見 [CONTRIBUTING-zh.md](CONTRIBUTING-zh.md)*
+
 Two paths to contribute. Pick the one that matches what you have:
 
 - **You hit a real bad smell** that an existing skill missed → [submit a sample](#submit-a-bad-smell-sample)

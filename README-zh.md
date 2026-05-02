@@ -1,5 +1,7 @@
 # sniffer
 
+*For English, see [README.md](README.md)*
+
 > 嗅出個所以然。
 
 橫跨軟體開發生命週期的 AI agent 技能組，嗅出程式碼的壞味道——無需打開黑盒。

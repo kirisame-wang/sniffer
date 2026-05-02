@@ -1,5 +1,7 @@
 # 貢獻指南
 
+*For English, see [CONTRIBUTING.md](CONTRIBUTING.md)*
+
 兩條貢獻路徑，選擇符合你情況的那條：
 
 - **你遇到了某個既有技能沒抓到的真實壞味道** → [提交壞味道樣本](#提交壞味道樣本)

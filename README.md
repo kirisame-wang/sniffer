@@ -1,5 +1,7 @@
 # sniffer
 
+*繁體中文版本請見 [README-zh.md](README-zh.md)*
+
 > Smell for me.
 
 AI agent skills that sniff bad smells across your software development lifecycle — without opening the box.
