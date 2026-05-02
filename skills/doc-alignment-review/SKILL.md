@@ -1,7 +1,7 @@
 ---
 name: doc-alignment-review
-description: Sniffs bad smells in documentation alignment with the artifacts it documents (README, API reference, ADR, architecture overview, runbook against in-scope spec or code). Reports the few concentrations that matter; holds full evidence in working memory. Use when a doc set is up for review, when a long-running doc has drifted, or when reviewing a contributor's documentation contribution.
-phase: Ship
+description: Sniffs bad smells in alignment between documentation and the artifacts it documents (README, API reference, architecture overview, runbook, quickstart against the in-scope spec, code, or import graph). Reports the few concentrations that matter; holds full evidence in working memory. Use when a doc set is up for review, when a long-running doc has drifted, or when reviewing a contributor's documentation contribution.
+phase: Review
 ---
 
 # doc-alignment-review
@@ -10,7 +10,7 @@ phase: Ship
 
 A graybox audit skill for documentation alignment. Only the few concentrations that warrant the reviewer's next move surface in the artifact; the complete observation set lives in working memory and emerges on request.
 
-This skill audits the structural quality of documentation as it relates to the artifacts it documents (in scope): drift between doc and spec/code, ADR completeness, audience clarity, link health, maintenance signals. The substance of whether the doc is well-written prose (writing-quality judgment) and whether it covers the right things at the philosophical level (information architecture judgment) belong to other audit domains.
+This skill audits whether documentation is aligned with the artifacts it documents (in scope): drift between doc and spec/code, freshness of referenced versions and entities, integrity of internal cross-links, single-source-of-truth across docs. The substance of whether the doc itself is structurally sound as a decision/design document (rationale, alternatives, consequences) belongs to `design-doc-review`; prose style, tone, audience clarity, and maintenance lifecycle metadata are out of scope for the alignment audit.
 
 ## When to Use
 
@@ -18,22 +18,19 @@ This skill audits the structural quality of documentation as it relates to the a
 - A long-running doc has drifted and a coherence pass against the current spec/code is needed
 - A contributor's documentation contribution is up for review
 
-**When NOT to use:** evaluating prose style, tone, or readability (writing-quality review, not a structural audit); auditing the design narrative within a single design doc (that's `design-doc-review`'s domain); cross-checking against external systems beyond scope (out of graybox boundary).
+**When NOT to use:** evaluating prose style, tone, readability, or audience clarity (writing-quality concerns, not alignment); auditing the design narrative or decision rationale within an ADR / design doc (that's `design-doc-review`'s domain); auditing doc lifecycle metadata such as last-updated markers, owners, or review cadence (general documentation hygiene, no current home in sniffer); cross-checking against external systems beyond scope (out of graybox boundary).
 
 ## Smell Profile
 
 Named categories used as report vocabulary:
 
-- **Spec / code drift** — doc claims a behavior, signature, field, or flow that contradicts the in-scope spec or code
+- **Spec / code drift** — doc claims a behavior, signature, field, flow, or architectural pattern (layering, hexagonal/clean/onion, module-boundary policy) that contradicts the in-scope spec, code, or import graph
 - **Stale information** — version numbers, dates, deprecated entities, or removed components persist in the doc
-- **ADR rationale gap** — Architecture Decision Record states the decision without alternatives considered, trade-offs, or rejection reasons
 - **Quickstart / install gap** — getting-started path is missing, incomplete, or broken when traced step-by-step against the in-scope artifact
 - **API doc gap** — public API surface lacks documentation, or doc lists methods/fields that no longer exist in the spec/code
 - **Diagram-text mismatch** — diagram labels, component names, or arrows do not match the prose or the spec/code
 - **Doc duplication drift** — same fact appears in multiple docs with diverging values; no single source of truth
 - **Cross-link rot** — internal anchor, file link, or section reference is broken within the in-scope document set
-- **Audience unclear** — doc does not state who it serves (operator, integrator, end user, contributor); content shifts audience mid-document
-- **Maintenance signal absent** — doc has no last-updated marker, no owner, no review cadence, no deprecation note for older sections
 
 Detailed patterns and recognition examples for each category live in [`bad-smell-samples.md`](bad-smell-samples.md). The Smell Profile gives vocabulary; the catalog gives recognition shapes — clustering of multiple categories on shared evidence is a runtime judgment from the actual artifact under review, not a pre-authored combination. Each observation carries a category tag and an evidence anchor (a doc path, section heading, or line range). Anything that fits none of the named categories is held under "miscellaneous".
 
@@ -77,7 +74,9 @@ All named categories were scanned. Observations beyond the top concentrations ar
 
 The written report does **not** include:
 
-- Prose style, tone, or readability judgments
+- Prose style, tone, readability, or audience clarity
+- ADR / design doc internal completeness (rationale, alternatives, consequences)
+- Doc lifecycle metadata (last-updated markers, owners, review cadence, deprecation notes)
 - Information-architecture judgments (what should or should not be documented)
 - Cross-checks against external systems, third-party docs, or runtime telemetry
 - Performance or security evaluation of the system being documented
