@@ -18,7 +18,7 @@ This skill audits the structural quality of a task plan: atomicity, verifiabilit
 - A long-running task list has accumulated edits and needs a coherence pass
 - A contributor's planning artifact is up for review before merge
 
-**When NOT to use:** project-level roadmaps and positioning docs (that's `design-doc-review`'s audit domain); reviewing the merits of which tasks to include (that's a product conversation, not an audit); calibrating effort estimates (that's a project judgment).
+**When NOT to use:** project-level roadmaps and positioning docs (that's `design-doc-review`'s audit domain); reviewing the merits of which tasks to include (that's a product conversation, not an audit); calibrating effort estimates (that's a project judgment); auditing whether the plan correctly inherits from an approved design (that's `implementation-plan-review`'s domain — same plan artifact can be reviewed by both skills as multi-perspective).
 
 ## Smell Profile
 

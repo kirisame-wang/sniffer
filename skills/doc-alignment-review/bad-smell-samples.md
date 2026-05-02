@@ -17,8 +17,5 @@ The catalog supports per-category recognition in evidence anchors (a doc path, s
 | API reference lists methods (`oldMethod`, `legacyHelper`) that no longer exist in source | API doc gap |
 | Architecture diagram shows component "AuthService"; prose calls the same component "User Authentication Layer" | Diagram-text mismatch |
 | Sequence diagram shows three steps; prose describes four steps in different order | Diagram-text mismatch |
-| The same fact (version requirement, configuration default, command syntax) appears in two or more docs with conflicting values | Doc duplication drift |
-| Doc links to `[architecture](./docs/architecture.md)` but file is at `./docs/arch/overview.md` | Cross-link rot |
-| Internal anchor `#installation` referenced from another doc; target heading no longer uses that slug | Cross-link rot |
 
 Contributions take the form of new rows in this table: one generic pattern + one matching category per row.

@@ -1,6 +1,6 @@
 ---
 name: doc-alignment-review
-description: Sniffs bad smells in alignment between documentation and the artifacts it documents (README, API reference, architecture overview, runbook, quickstart against the in-scope spec, code, or import graph). Reports the few concentrations that matter; holds full evidence in working memory. Use when a doc set is up for review, when a long-running doc has drifted, or when reviewing a contributor's documentation contribution.
+description: Sniffs bad smells in alignment between documentation and the spec/code it describes (README, API reference, architecture overview, runbook, quickstart against the in-scope spec, code, or import graph). Reports the few concentrations that matter; holds full evidence in working memory. Use when a doc set is up for review against its source, when a long-running doc has drifted from the code it describes, or when reviewing a contributor's documentation contribution against the underlying artifact.
 phase: Review
 ---
 
@@ -18,25 +18,23 @@ This skill audits whether documentation is aligned with the artifacts it documen
 - A long-running doc has drifted and a coherence pass against the current spec/code is needed
 - A contributor's documentation contribution is up for review
 
-**When NOT to use:** evaluating prose style, tone, readability, or audience clarity (writing-quality concerns, not alignment); auditing the design narrative or decision rationale within an ADR / design doc (that's `design-doc-review`'s domain); auditing doc lifecycle metadata such as last-updated markers, owners, or review cadence (general documentation hygiene, no current home in sniffer); cross-checking against external systems beyond scope (out of graybox boundary).
+**When NOT to use:** evaluating prose style, tone, or readability (writing-quality concerns, not alignment); auditing the design narrative or decision rationale within an ADR / design doc (that's `design-doc-review`'s domain); auditing cross-doc fact consistency, link integrity, audience clarity, or maintenance metadata (that's `doc-hygiene-review`'s domain); cross-checking against external systems beyond scope (out of graybox boundary).
 
 ## Smell Profile
 
 Named categories used as report vocabulary:
 
 - **Spec / code drift** — doc claims a behavior, signature, field, flow, or architectural pattern (layering, hexagonal/clean/onion, module-boundary policy) that contradicts the in-scope spec, code, or import graph
-- **Stale information** — version numbers, dates, deprecated entities, or removed components persist in the doc
+- **Stale information** — version numbers, dates, deprecated entities, or removed components persist in the doc relative to the in-scope spec/code
 - **Quickstart / install gap** — getting-started path is missing, incomplete, or broken when traced step-by-step against the in-scope artifact
 - **API doc gap** — public API surface lacks documentation, or doc lists methods/fields that no longer exist in the spec/code
 - **Diagram-text mismatch** — diagram labels, component names, or arrows do not match the prose or the spec/code
-- **Doc duplication drift** — same fact appears in multiple docs with diverging values; no single source of truth
-- **Cross-link rot** — internal anchor, file link, or section reference is broken within the in-scope document set
 
 Detailed patterns and recognition examples for each category live in [`bad-smell-samples.md`](bad-smell-samples.md). The Smell Profile gives vocabulary; the catalog gives recognition shapes — clustering of multiple categories on shared evidence is a runtime judgment from the actual artifact under review, not a pre-authored combination. Each observation carries a category tag and an evidence anchor (a doc path, section heading, or line range). Anything that fits none of the named categories is held under "miscellaneous".
 
 ## Input Contract
 
-A documentation artifact (README, API reference, ADR, architecture overview, runbook, design doc set) along with the in-scope spec or code it documents (so drift can be checked). Scope-ambiguous cases require reviewer confirmation rather than silent picking. The audit covers the documentation and the explicitly-provided reference artifact(s) — no live system, no external link content, no third-party docs — with cross-reference limited to in-scope documents.
+A documentation artifact (README, API reference, architecture overview, runbook, design doc set) **together with** the spec or code it describes. Both must be in scope — the audit's question (alignment between doc and source) is intrinsically cross-artifact and cannot run without the source side. Scope-ambiguous cases require reviewer confirmation rather than silent picking. The audit covers the documentation and the explicitly-provided reference artifact(s) — no live system, no external link content, no third-party docs — with cross-reference limited to in-scope documents. For doc-set hygiene concerns (cross-doc consistency, link integrity, audience clarity, maintenance signals) that don't require source comparison, use `doc-hygiene-review` instead.
 
 ## Output Format
 

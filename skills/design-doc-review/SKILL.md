@@ -1,6 +1,6 @@
 ---
 name: design-doc-review
-description: Sniffs bad smells in design documents (specs, ADRs, architecture overviews, RFCs) without opening the box. Reports the few concentrations that matter; holds full evidence in working memory and surfaces it on request. Use when reviewing any design document — before implementation begins, after accumulated edits need a coherence pass, or as a fast first-pass scan before a longer review session.
+description: Sniffs bad smells in design documents (specs, ADRs, architecture overviews, RFCs) — design's standalone soundness, plus design-vs-requirements inheritance when the requirements artifact is also in scope. Reports the few concentrations that matter; holds full evidence in working memory and surfaces it on request. Use when reviewing any design document — before implementation begins, after accumulated edits need a coherence pass, or as a fast first-pass scan before a longer review session.
 phase: Define
 ---
 
@@ -8,14 +8,17 @@ phase: Define
 
 ## Overview
 
-A graybox audit skill for design documents. Only the few concentrations that warrant the reviewer's next move surface in the artifact; the complete observation set lives in working memory and emerges on request — "what about X?" brings the relevant observations forward.
+A graybox audit skill for design document fidelity — standalone soundness when no requirements artifact is in scope, requirements fidelity when one is. Only the few concentrations that warrant the reviewer's next move surface in the artifact; the complete observation set lives in working memory and emerges on request — "what about X?" brings the relevant observations forward.
 
 The canine, not the judge. The canine alerts on the strongest scent and waits for the handler to ask where else.
+
+**Standalone categories** (design only) audit the design's structural soundness as a decision document. **Inheritance categories** (design + requirements) additionally audit whether the design correctly addresses the frozen requirements. Categories marked "(requires requirements in scope)" are skipped with an explicit Coverage note when no requirements artifact is available.
 
 ## When to Use
 
 - A design document, spec, ADR, or RFC is up for review before implementation
 - A long-running design doc has accumulated edits and needs a coherence pass
+- A design and its driving requirements are both in scope and inheritance review is wanted
 - You want a fast first-pass scan to focus a longer review session
 
 **When NOT to use:** mid-implementation drift checks, code review, copy-editing, or evaluating whether a technical choice is correct.
@@ -23,6 +26,8 @@ The canine, not the judge. The canine alerts on the strongest scent and waits fo
 ## Smell Profile
 
 Named categories used as report vocabulary:
+
+**Standalone categories** (apply whenever design is in scope):
 
 - **Completeness gaps** — a standard section is missing (Objective / Success Criteria / Boundaries / Open Questions / Alternatives Considered / Consequences)
 - **Undocumented decisions** — a choice is stated without Context / Alternatives / Consequences nearby
@@ -34,11 +39,16 @@ Named categories used as report vocabulary:
 - **Aspirational language** — strong claims with no artifact, owner, or verification path
 - **Scope sprawl** — a single doc serves multiple distinct reader responsibilities, causing structural mismatch beyond reviewer attention
 
+**Inheritance categories** (require requirements artifact in scope; skipped with explicit Coverage note when absent):
+
+- **Requirements coverage gap** — some requirements have no design treatment, decision, or component addressing them; or design adds out-of-requirements features without an explicit re-opening / escalation note
+- **Requirements traceability gap** — design decisions / non-functional translations / constraint propagations do not link to specific requirements; the why-trail from design to requirement is unreachable; requirements' NFRs and constraints are not surfaced as measurable design choices
+
 Detailed patterns and recognition examples for each category live in [`bad-smell-samples.md`](bad-smell-samples.md). The Smell Profile gives vocabulary; the catalog gives recognition shapes — clustering of multiple categories on shared evidence is a runtime judgment from the actual document, not a pre-authored combination. Each observation carries a category tag and an evidence anchor. Anything that fits none of the named categories is held under "miscellaneous".
 
 ## Input Contract
 
-One or more design documents (`*.md`, `*.rst`, `*.txt`, HTML). Scope-ambiguous cases require reviewer confirmation rather than silent picking. The audit covers the document(s) only — no source code, issue trackers, runtime data, or external links — with cross-reference limited to in-scope documents.
+One or more design documents (`*.md`, `*.rst`, `*.txt`, HTML) — **required**. Optionally, the requirements artifact the design realizes (PRD, functional spec, BRD, user-story collection) — when this is in scope, inheritance categories are evaluated; when absent, those categories are reported as skipped in the Coverage section. Scope-ambiguous cases require reviewer confirmation rather than silent picking. The audit covers the in-scope document(s) only — no source code, issue trackers, runtime data, or external links — with cross-reference limited to in-scope documents.
 
 ## Output Format
 
@@ -67,9 +77,11 @@ Smells converging: <category A>, <category B>, …
 
 ## Coverage
 
-All named categories were scanned. Observations beyond the top concentrations are held in working memory; any category, location, or finding is expandable on request (e.g. `expand contradictions`, `what's near Section 8?`).
+All in-scope categories were scanned. Observations beyond the top concentrations are held in working memory; any category, location, or finding is expandable on request (e.g. `expand contradictions`, `what's near Section 8?`).
 
 *Passed lenses (no findings): <list — present only when at least one category has zero observations>.*
+
+*Skipped (requires upstream artifact in scope): <list inheritance categories whose upstream artifact is not in scope; omit this line when all categories ran>.*
 ```
 
 ## Out of Scope (during the audit / in the artifact)
