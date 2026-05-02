@@ -42,9 +42,26 @@ Skills are flat under `skills/` (no phase subdirectories). Below is the navigati
 | Ship | [`migration-risk-review`](skills/migration-risk-review/SKILL.md) | v1 | deprecation / migration risk |
 | Ship | [`release-readiness-review`](skills/release-readiness-review/SKILL.md) | v1 | release readiness |
 
-## Quick start
+## Quick Start
 
-A sniffer skill is a folder with `SKILL.md` (Anthropic Agent Skills format). Once installed in your agent (Claude Code, Cursor, Goose, etc. — see [client showcase](https://agentskills.io/home)), invoke a skill against an artifact:
+<details>
+<summary><b>Claude Code (recommended)</b></summary>
+
+**Marketplace install:**
+
+```
+/plugin marketplace add kirisame-wang/sniffer
+/plugin install sniffer@sniffer-marketplace
+```
+
+> **SSH errors?** The marketplace clones repos via SSH. If you don't have SSH keys set up on GitHub, either [add your SSH key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) or switch to HTTPS for fetches only:
+> ```bash
+> git config --global url."https://github.com/".insteadOf "git@github.com:"
+> ```
+
+</details>
+
+A sniffer skill is a folder with `SKILL.md` (Anthropic Agent Skills format). Once installed, invoke a skill against an artifact:
 
 ```
 > Use design-doc-review on docs/architecture.md
