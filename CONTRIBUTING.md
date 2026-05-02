@@ -7,8 +7,6 @@ Two paths to contribute. Pick the one that matches what you have:
 
 For project background and the skill roadmap, read [`README.md`](README.md) first.
 
-> **Note**: Two reference skills (`design-doc-review`, `skill-design-review`) are now available under `skills/`. Detailed convention docs (skill design rules, SKILL.md template, DoD checklist, authoritative spec references) arrive in subsequent commits. The high-level rules below are stable; specific file paths to those convention docs will be added as they land.
-
 ---
 
 ## Submit a bad-smell sample
@@ -37,12 +35,12 @@ A heavier contribution. New skills must follow project conventions and pass self
 
 2. **Create the skill folder**: `skills/<your-skill-name>/SKILL.md`. Naming: lowercase + hyphens, gerund or noun-phrase form, no reserved words (`anthropic`, `claude`).
 
-3. **Write the SKILL.md** following the template (template doc lands in subsequent commits). Required sections at minimum: Frontmatter (`name`, `description`, `phase`), Overview, When to Use, Responsibilities, Smell Profile, Input Contract, Output Format, Out of Scope, Common Rationalizations, Red Flags, Verification.
+3. **Write the SKILL.md** following the 7-section template used by existing skills. Required sections: Frontmatter (`name`, `description`, `phase`), Overview, When to Use, Smell Profile, Input Contract, Output Format, Out of Scope, References. Use any converged v1 skill as a reference (e.g. [`design-doc-review`](skills/design-doc-review/SKILL.md)).
 
 4. **Pass DoD self-audit** — three hard gates, all required:
    - **Gate 1** — run `skill-design-review` on your `SKILL.md` and attach the sniff report
    - **Gate 2** — pass the five self-validation criteria: interface clarity / internal encapsulation / single responsibility / independent execution / low coupling
-   - **Gate 3** — invoke the skill on a real (or minimal synthetic) artifact and confirm the output matches the `## Output Format` spec, shows no `## Red Flags` symptoms, and passes the `## Verification` checklist
+   - **Gate 3** — invoke the skill on a real (or minimal synthetic) artifact and confirm the output matches the `## Output Format` spec
 
 5. **Populate `bad-smell-samples.md`** with at least one canonical row per named category in your Smell Profile. Generic patterns; no project memoirs; no near-duplicates.
 

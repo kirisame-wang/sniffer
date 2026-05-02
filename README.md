@@ -20,22 +20,22 @@ Skills are flat under `skills/` (no phase subdirectories). Below is the navigati
 
 | Phase | Skill | Status | Audit domain |
 |------|------|------|------|
-| Define | [`design-doc-review`](skills/design-doc-review/SKILL.md) ✨**MVP** | converged v1 | design-doc smells (specs / ADRs / RFCs) |
-| Define | [`skill-design-review`](skills/skill-design-review/SKILL.md) | converged v1 | SKILL.md design quality (sniffer-original) |
-| Plan | `task-decomposition-review` | planned | task breakdown quality |
-| Build | `interface-contract-review` | planned | contract smells (API / schema / type) |
-| Build | `ui-quality-review` | planned | UI quality (accessibility / responsiveness) |
-| Verify | `test-coverage-review` | planned | test quality |
-| Verify | `runtime-test-review` | planned | runtime test smells |
-| Verify | `diagnosability-review` | planned | observability gaps |
-| Review | `complexity-review` | planned | maintainability smells |
-| Review | `security-review` | planned | security smells |
-| Review | `performance-review` | planned | performance smells |
-| Ship | `commit-quality-review` | planned | commit / change quality |
-| Ship | `pipeline-review` | planned | CI/CD soundness |
-| Ship | `migration-risk-review` | planned | deprecation / migration risk |
-| Ship | `doc-alignment-review` | planned | doc-vs-implementation drift |
-| Ship | `release-readiness-review` | planned | release readiness |
+| Define | [`design-doc-review`](skills/design-doc-review/SKILL.md) | v1 | design-doc smells (specs / ADRs / RFCs) |
+| Define | [`skill-design-review`](skills/skill-design-review/SKILL.md) | v1 | SKILL.md design quality (sniffer-original) |
+| Plan | [`task-decomposition-review`](skills/task-decomposition-review/SKILL.md) | v1 | task breakdown quality |
+| Build | [`interface-contract-review`](skills/interface-contract-review/SKILL.md) | v1 | contract smells (API / schema / type) |
+| Build | [`ui-quality-review`](skills/ui-quality-review/SKILL.md) | v1 | UI quality (accessibility / responsiveness) |
+| Verify | [`test-coverage-review`](skills/test-coverage-review/SKILL.md) | v1 | test quality |
+| Verify | [`runtime-test-review`](skills/runtime-test-review/SKILL.md) | v1 | runtime test smells |
+| Verify | [`diagnosability-review`](skills/diagnosability-review/SKILL.md) | v1 | observability gaps |
+| Review | [`complexity-review`](skills/complexity-review/SKILL.md) | v1 | maintainability smells |
+| Review | [`security-review`](skills/security-review/SKILL.md) | v1 | security smells |
+| Review | [`performance-review`](skills/performance-review/SKILL.md) | v1 | performance smells |
+| Ship | [`commit-quality-review`](skills/commit-quality-review/SKILL.md) | v1 | commit / change quality |
+| Ship | [`pipeline-review`](skills/pipeline-review/SKILL.md) | v1 | CI/CD soundness |
+| Ship | [`migration-risk-review`](skills/migration-risk-review/SKILL.md) | v1 | deprecation / migration risk |
+| Ship | [`doc-alignment-review`](skills/doc-alignment-review/SKILL.md) | v1 | doc-vs-implementation drift |
+| Ship | [`release-readiness-review`](skills/release-readiness-review/SKILL.md) | v1 | release readiness |
 
 ## Quick start
 
