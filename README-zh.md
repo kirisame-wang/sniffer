@@ -50,7 +50,6 @@
 |------|------|------|----------|
 | Define | [`requirements-doc-review`](skills/requirements-doc-review/SKILL.md) | v1 | 需求清晰度與可驗證性（問題空間） |
 | Define | [`design-doc-review`](skills/design-doc-review/SKILL.md) | v1 | 設計文件健全性；視範圍需要時亦涵蓋需求追溯性 |
-| Define | [`skill-design-review`](skills/skill-design-review/SKILL.md) | v1 | SKILL.md 設計品質（sniffer 原創 meta） |
 | Plan | [`task-decomposition-review`](skills/task-decomposition-review/SKILL.md) | v1 | 任務列表結構品質（原子性／順序／垂直切片） |
 | Plan | [`implementation-plan-review`](skills/implementation-plan-review/SKILL.md) | v1 | 計畫對設計的符合度結構準備程度；視範圍需要時亦涵蓋設計 vs 計畫繼承關係 |
 | Build | [`interface-contract-review`](skills/interface-contract-review/SKILL.md) | v1 | 合約壞味道（API／schema／型別） |
@@ -64,6 +63,7 @@
 | Review | [`performance-review`](skills/performance-review/SKILL.md) | v1 | 效能態勢 |
 | Review | [`doc-alignment-review`](skills/doc-alignment-review/SKILL.md) | v1 | 文件 vs 規格／程式碼對齊 |
 | Review | [`doc-hygiene-review`](skills/doc-hygiene-review/SKILL.md) | v1 | 文件集衛生（一致性／連結／受眾／生命週期） |
+| Review | [`skill-design-review`](skills/skill-design-review/SKILL.md) | v1 | SKILL.md 設計品質（sniffer 原創 meta） |
 | Ship | [`commit-quality-review`](skills/commit-quality-review/SKILL.md) | v1 | commit 歷史品質 |
 | Ship | [`pr-review`](skills/pr-review/SKILL.md) | v1 | PR 合併就緒度（sniffer 原創） |
 | Ship | [`pipeline-review`](skills/pipeline-review/SKILL.md) | v1 | CI/CD 健全性 |

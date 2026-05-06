@@ -50,7 +50,6 @@ Skills are flat under `skills/` (no phase subdirectories). Below is the navigati
 |------|------|------|------|
 | Define | [`requirements-doc-review`](skills/requirements-doc-review/SKILL.md) | v1 | requirements clarity & verifiability (problem space) |
 | Define | [`design-doc-review`](skills/design-doc-review/SKILL.md) | v1 | design-doc soundness; + requirements-traceability when in scope |
-| Define | [`skill-design-review`](skills/skill-design-review/SKILL.md) | v1 | SKILL.md design quality (sniffer-original meta) |
 | Plan | [`task-decomposition-review`](skills/task-decomposition-review/SKILL.md) | v1 | task-list structural quality (atomicity / sequencing / vertical slicing) |
 | Plan | [`implementation-plan-review`](skills/implementation-plan-review/SKILL.md) | v1 | plan structural readiness for design-conformance; + design-vs-plan inheritance when in scope |
 | Build | [`interface-contract-review`](skills/interface-contract-review/SKILL.md) | v1 | contract smells (API / schema / type) |
@@ -64,6 +63,7 @@ Skills are flat under `skills/` (no phase subdirectories). Below is the navigati
 | Review | [`performance-review`](skills/performance-review/SKILL.md) | v1 | performance posture |
 | Review | [`doc-alignment-review`](skills/doc-alignment-review/SKILL.md) | v1 | doc-vs-spec/code alignment |
 | Review | [`doc-hygiene-review`](skills/doc-hygiene-review/SKILL.md) | v1 | doc-set hygiene (consistency / links / audience / lifecycle) |
+| Review | [`skill-design-review`](skills/skill-design-review/SKILL.md) | v1 | SKILL.md design quality (sniffer-original meta) |
 | Ship | [`commit-quality-review`](skills/commit-quality-review/SKILL.md) | v1 | commit-history quality |
 | Ship | [`pr-review`](skills/pr-review/SKILL.md) | v1 | PR merge-readiness (sniffer-original) |
 | Ship | [`pipeline-review`](skills/pipeline-review/SKILL.md) | v1 | CI/CD soundness |

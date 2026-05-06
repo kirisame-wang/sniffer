@@ -1,7 +1,7 @@
 ---
 name: skill-design-review
 description: Audits SKILL.md files for sniffer-specific convention conformance and self-validation failures — frontmatter, boundary anchors, HOW prescription, coupling, and skill-local file quality. Reports top concentrations; holds full evidence in working memory. Use before merge, during revision, or as the DoD self-audit gate.
-phase: Define
+phase: Review
 ---
 
 # skill-design-review
