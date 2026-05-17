@@ -28,6 +28,7 @@ Named categories used as report vocabulary:
 - **Happy-path-only coverage** — test set covers nominal inputs but no negative, boundary, or adversarial cases
 - **Boundary case absence** — edge inputs (empty, null, max, min, off-by-one) untested for code that explicitly handles them
 - **Weak assertion** — test asserts only that "no error was thrown" or checks output truthiness without verifying value or shape
+- **Self-referential oracle** — the expected value is captured from the code's own output (snapshot / golden file / approval test), regenerated on update, so the test detects change rather than verifying intended behavior
 - **Test name vagueness** — names like `test_works`, `test_case_1`, `it should be ok` give no signal about what behavior is verified
 - **Setup coupling** — tests share mutable setup such that order or skipping changes outcomes
 - **Test interdependence** — one test depends on side effects from another; tests cannot run in isolation

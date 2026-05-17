@@ -1,7 +1,7 @@
 {
   "name": "sniffer",
   "description": "Graybox audit skills for AI coding agents — sniff bad smells across the software development lifecycle without opening the box. Skills span Define / Plan / Build / Verify / Review / Ship phases.",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": {
     "name": "Yi-Cheng Wang"
   },

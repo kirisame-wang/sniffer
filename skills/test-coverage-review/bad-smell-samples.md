@@ -14,6 +14,7 @@ The catalog supports per-category recognition in evidence anchors (a test file p
 | Pagination function has off-by-one risk on page boundaries; tests cover middle pages only | Boundary case absence |
 | Test calls function and asserts only `assert result is not None` or `expect(fn).not.toThrow()` | Weak assertion |
 | Test compares JSON response to an empty `{}` with `assertContains`, missing field-level checks | Weak assertion |
+| Test's only assertion is `toMatchSnapshot()` / golden-file equality; the baseline was captured from the code's own output, never written from the spec | Self-referential oracle |
 | Test names like `test_1`, `test_case_a`, `it should work`, `it does the thing` | Test name vagueness |
 | Describe block named "edge cases" with no per-test name distinguishing which edge | Test name vagueness |
 | Tests share a module-level mutable list; running test_b alone fails because test_a populates it | Setup coupling |
