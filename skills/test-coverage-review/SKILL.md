@@ -10,7 +10,7 @@ phase: Verify
 
 A graybox audit skill for test suites and test plans. Only the few concentrations that warrant the reviewer's next move surface in the artifact; the complete observation set lives in working memory and emerges on request.
 
-This skill audits the structural quality of test coverage and test design: branch coverage, boundary cases, assertion strength, isolation, naming, organization. The substance of whether the right behavior is being tested (test strategy judgment) and whether tests pass against current code (execution result) belong to other audit domains.
+This skill audits the structural quality of test coverage and test design: branch coverage, boundary cases, assertion strength, isolation, test level, test subject, naming, organization. The substance of whether the right behavior is being tested (test strategy judgment) and whether tests pass against current code (execution result) belong to other audit domains.
 
 ## When to Use
 
@@ -34,6 +34,8 @@ Named categories used as report vocabulary:
 - **Setup coupling** — tests share mutable setup such that order or skipping changes outcomes
 - **Test interdependence** — one test depends on side effects from another; tests cannot run in isolation
 - **Mock over-reliance** — tests mock the unit under test or so much of its environment that the assertion verifies the mock, not the code
+- **Test level mismatch** — a test's declared level (directory, marker, file naming) disagrees with the scope it exercises: unit tests reach real external dependencies (database, network, subprocess, browser) or read unpatched environment variables; integration / end-to-end tests mock away the in-house boundary their level exists to exercise; end-to-end tests call a single unit directly instead of going through an entry point
+- **Foreign behavior testing** — a test's assertions target only third-party or built-in module behavior, not anything project code adds, so it re-verifies guarantees the external module owns; a test whose name or description states which project module relies on that behavior is a learning test pinning a contract, not this smell
 - **Regression coverage gap** — known-bug fix lands without a test that fails before the fix and passes after
 - **Flaky test tolerance** — tests marked skip / retry / xfail without a tracked reason or expiry
 

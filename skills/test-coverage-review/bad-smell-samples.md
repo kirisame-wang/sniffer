@@ -26,6 +26,12 @@ The catalog supports per-category recognition in evidence anchors (a test file p
 | Integration test relies on data left over from a previous test file's run | Test interdependence |
 | Unit test for `OrderService.calculate_total` mocks `OrderService.calculate_total` itself or replaces all its collaborators with mocks that return the expected total | Mock over-reliance |
 | Test mocks the database, the cache, the external API, and the clock — final assertion only verifies the mock was called | Mock over-reliance |
+| Test file under `tests/unit/` opens a real database connection or HTTP client in its fixtures | Test level mismatch |
+| Unit test reads an environment variable (directly or through config loading) without patching it, so its outcome depends on the machine running it | Test level mismatch |
+| Test marked `integration` for a repository class mocks the database driver, so no query ever reaches a database | Test level mismatch |
+| File under `e2e/` imports an internal function and asserts its return value directly, with no browser, HTTP, or CLI entry point | Test level mismatch |
+| Test asserts generic results of a standard-library or third-party call (`json.loads`, `datetime.fromisoformat`, a regex match) whose name or description states no project module that relies on that behavior | Foreign behavior testing |
+| Test for an HTTP wrapper asserts only that the underlying client library serializes headers or retries as documented, not what the wrapper itself adds | Foreign behavior testing |
 | Bug ticket fix landed; commit changed production code only, no new test that would have caught the regression | Regression coverage gap |
 | `xfail` / `skip` annotation with comment "flaky, fix later" and no issue link or expiry | Flaky test tolerance |
 | Test marked with `retry(3)` to mask intermittent failure; no root-cause investigation reference | Flaky test tolerance |
