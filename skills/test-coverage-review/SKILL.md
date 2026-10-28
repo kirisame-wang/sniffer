@@ -10,7 +10,7 @@ phase: Verify
 
 A graybox audit skill for test suites and test plans. Only the few concentrations that warrant the reviewer's next move surface in the artifact; the complete observation set lives in working memory and emerges on request.
 
-This skill audits the structural quality of test coverage and test design: branch coverage, boundary cases, assertion strength, isolation, naming. The substance of whether the right behavior is being tested (test strategy judgment) and whether tests pass against current code (execution result) belong to other audit domains.
+This skill audits the structural quality of test coverage and test design: branch coverage, boundary cases, assertion strength, isolation, naming, organization. The substance of whether the right behavior is being tested (test strategy judgment) and whether tests pass against current code (execution result) belong to other audit domains.
 
 ## When to Use
 
@@ -30,6 +30,7 @@ Named categories used as report vocabulary:
 - **Weak assertion** — test asserts only that "no error was thrown" or checks output truthiness without verifying value or shape
 - **Self-referential oracle** — the expected value is captured from the code's own output (snapshot / golden file / approval test), regenerated on update, so the test detects change rather than verifying intended behavior
 - **Test name vagueness** — names like `test_works`, `test_case_1`, `it should be ok` give no signal about what behavior is verified
+- **Subject-test traceability gap** — test files are organized by change (PR, ticket, sprint) or, at unit level, by feature rather than by unit under test, so the suite offers no identifiable home for any given unit's tests
 - **Setup coupling** — tests share mutable setup such that order or skipping changes outcomes
 - **Test interdependence** — one test depends on side effects from another; tests cannot run in isolation
 - **Mock over-reliance** — tests mock the unit under test or so much of its environment that the assertion verifies the mock, not the code

@@ -17,6 +17,9 @@ The catalog supports per-category recognition in evidence anchors (a test file p
 | Test's only assertion is `toMatchSnapshot()` / golden-file equality; the baseline was captured from the code's own output, never written from the spec | Self-referential oracle |
 | Test names like `test_1`, `test_case_a`, `it should work`, `it does the thing` | Test name vagueness |
 | Describe block named "edge cases" with no per-test name distinguishing which edge | Test name vagueness |
+| Test files named after changes — `test_pr_1234.py`, `test_sprint5_changes.py` — rather than the unit they exercise | Subject-test traceability gap |
+| Tests importing the same module are spread across several files, none of which is named after that module | Subject-test traceability gap |
+| One unit-test file exercises several distinct modules under a feature heading ("checkout tests" covering cart, pricing, and tax calculators) | Subject-test traceability gap |
 | Tests share a module-level mutable list; running test_b alone fails because test_a populates it | Setup coupling |
 | Test uses `beforeAll` to seed state; later tests mutate it without reset | Setup coupling |
 | Test_b reads a record created by test_a; running tests in alphabetical order is required | Test interdependence |
